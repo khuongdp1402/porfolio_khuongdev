@@ -335,11 +335,11 @@ const ProjectCard = ({
 
 const CustomerCarousel = () => {
   const logos = [
-    { src: '/images/prj_savills.svg', alt: 'Customer 1' },
-    { src: '/images/prj_mih.jpg', alt: 'Customer 2' },
-    { src: '/images/prj_okdimall.svg', alt: 'Customer 3' },
-    { src: '/images/prj_pohang.png', alt: 'Customer 4' },
-    { src: '/images/prj_tealife.png', alt: 'Customer 5' },
+    { src: 'images/prj_savills.svg', alt: 'Customer 1' },
+    { src: 'images/prj_mih.jpg', alt: 'Customer 2' },
+    { src: 'images/prj_okdimall.svg', alt: 'Customer 3' },
+    { src: 'images/prj_pohang.png', alt: 'Customer 4' },
+    { src: 'images/prj_tealife.png', alt: 'Customer 5' },
   ];
 
   // We duplicate the logos to create a seamless loop
