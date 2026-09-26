@@ -2,6 +2,30 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --ink: 12 12 12;
+  --surface: 22 22 24;
+  --mist: 190 202 212;
+  --strong: 245 247 250;
+  --accent: 56 189 248;
+  --paper: 255 255 255;
+  --paperfg: 12 12 12;
+  --grad-a: #7b818c;
+  --grad-b: #d7e2ea;
+}
+
+:root[data-theme='light'] {
+  --ink: 247 246 243;
+  --surface: 255 255 255;
+  --mist: 71 85 105;
+  --strong: 15 23 42;
+  --accent: 29 78 216;
+  --paper: 15 15 18;
+  --paperfg: 245 247 250;
+  --grad-a: #0f172a;
+  --grad-b: #475569;
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -11,31 +35,146 @@
 html,
 body,
 #root {
-  background: #0c0c0c;
+  background: rgb(var(--ink));
 }
 
 body {
-  font-family: 'Kanit', sans-serif;
+  font-family: 'Be Vietnam Pro', system-ui, sans-serif;
+  color: rgb(var(--strong));
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+@layer components {
+  /* One type scale for the whole page: display > h2 > h3 > lead > body > small > label */
+  .t-display {
+    font-family: Kanit, 'Be Vietnam Pro', sans-serif;
+    font-weight: 700;
+    font-size: clamp(2.6rem, 5.4vw, 4.75rem);
+    line-height: 1.04;
+    letter-spacing: -0.02em;
+  }
+  .t-h2 {
+    font-family: Kanit, 'Be Vietnam Pro', sans-serif;
+    font-weight: 700;
+    font-size: clamp(2rem, 3.6vw, 3rem);
+    line-height: 1.1;
+    letter-spacing: -0.015em;
+  }
+  .t-h3 {
+    font-family: Kanit, 'Be Vietnam Pro', sans-serif;
+    font-weight: 600;
+    font-size: clamp(1.35rem, 2vw, 1.75rem);
+    line-height: 1.2;
+  }
+  .t-h4 {
+    font-weight: 600;
+    font-size: 1.0625rem;
+    line-height: 1.35;
+  }
+  .t-lead {
+    font-size: clamp(1.05rem, 1.3vw, 1.2rem);
+    line-height: 1.65;
+  }
+  .t-body {
+    font-size: 0.975rem;
+    line-height: 1.7;
+  }
+  .t-small {
+    font-size: 0.875rem;
+    line-height: 1.55;
+  }
+  .t-label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+  }
+  .section {
+    @apply px-5 sm:px-8 md:px-10 py-16 sm:py-20 md:py-24;
+  }
+  /* Horizontal snap rail on mobile, normal grid from sm up */
+  .rail {
+    @apply -mx-5 flex snap-x snap-mandatory gap-4 overflow-x-auto scroll-px-5 px-5 pb-3 sm:mx-0 sm:grid sm:overflow-visible sm:px-0 sm:pb-0;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+  .rail::-webkit-scrollbar {
+    display: none;
+  }
+  .rail > * {
+    @apply w-[84%] shrink-0 snap-start sm:w-auto;
+  }
+  .no-scrollbar {
+    scrollbar-width: none;
+  }
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
 }
 
 .hero-heading {
-  background: linear-gradient(180deg, #646973 0%, #bbccd7 100%);
+  background: linear-gradient(180deg, var(--grad-a) 0%, var(--grad-b) 100%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
+.accent-text {
+  background: linear-gradient(100deg, #1d4ed8 0%, #2563eb 40%, #06b6d4 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
 ::-webkit-scrollbar {
   width: 6px;
 }
-
 ::-webkit-scrollbar-track {
-  background: #0c0c0c;
+  background: rgb(var(--ink));
+}
+::-webkit-scrollbar-thumb {
+  background: rgb(var(--mist) / 0.3);
+  border-radius: 4px;
 }
 
-::-webkit-scrollbar-thumb {
-  background: rgba(215, 226, 234, 0.25);
-  border-radius: 4px;
+/* Marquee: CSS-driven infinite loop, pauses on hover */
+@keyframes marquee-left {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+.marquee-track {
+  animation: marquee-left var(--marquee-duration, 40s) linear infinite;
+}
+.marquee-track.reverse {
+  animation-direction: reverse;
+}
+.marquee:hover .marquee-track {
+  animation-play-state: paused;
+}
+.marquee {
+  mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track {
+    animation: none;
+  }
 }

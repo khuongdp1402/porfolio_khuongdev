@@ -1,74 +1,59 @@
 import React from 'react';
-import { Code2, Database, Cpu, Layers } from 'lucide-react';
+import { Award, GraduationCap } from 'lucide-react';
 import { FadeIn } from './FadeIn';
-import { AnimatedText } from './AnimatedText';
-import { ContactButton } from './ContactButton';
-
-const CORNER_ICON_CLASS =
-  'flex items-center justify-center rounded-[28px] border border-[#D7E2EA]/20 bg-white/[0.03] text-[#D7E2EA]';
+import { usePrefs } from '../context/Preferences';
+import { UI, CERTS } from '../i18n/content';
 
 export const AboutSection: React.FC = () => {
+  const { tr } = usePrefs();
+
   return (
-    <section
-      id="about"
-      className="relative min-h-screen flex flex-col items-center justify-center px-5 sm:px-8 md:px-10 py-20 overflow-hidden"
-    >
-      {/* Decorative corner icons */}
-      <FadeIn
-        delay={0.1}
-        x={-80}
-        y={0}
-        duration={0.9}
-        className={`${CORNER_ICON_CLASS} absolute top-[4%] left-[1%] sm:left-[2%] md:left-[4%] w-[120px] h-[120px] sm:w-[160px] sm:h-[160px] md:w-[210px] md:h-[210px]`}
-      >
-        <Code2 className="w-1/2 h-1/2" strokeWidth={1} />
-      </FadeIn>
-      <FadeIn
-        delay={0.25}
-        x={-80}
-        y={0}
-        duration={0.9}
-        className={`${CORNER_ICON_CLASS} absolute bottom-[8%] left-[3%] sm:left-[6%] md:left-[10%] w-[100px] h-[100px] sm:w-[140px] sm:h-[140px] md:w-[180px] md:h-[180px]`}
-      >
-        <Database className="w-1/2 h-1/2" strokeWidth={1} />
-      </FadeIn>
-      <FadeIn
-        delay={0.15}
-        x={80}
-        y={0}
-        duration={0.9}
-        className={`${CORNER_ICON_CLASS} absolute top-[4%] right-[1%] sm:right-[2%] md:right-[4%] w-[120px] h-[120px] sm:w-[160px] sm:h-[160px] md:w-[210px] md:h-[210px]`}
-      >
-        <Cpu className="w-1/2 h-1/2" strokeWidth={1} />
-      </FadeIn>
-      <FadeIn
-        delay={0.3}
-        x={80}
-        y={0}
-        duration={0.9}
-        className={`${CORNER_ICON_CLASS} absolute bottom-[8%] right-[3%] sm:right-[6%] md:right-[10%] w-[130px] h-[130px] sm:w-[170px] sm:h-[170px] md:w-[220px] md:h-[220px]`}
-      >
-        <Layers className="w-1/2 h-1/2" strokeWidth={1} />
-      </FadeIn>
+    <section id="about" className="section">
+      <div className="mx-auto grid max-w-page grid-cols-1 gap-12 lg:grid-cols-[1.2fr_1fr] lg:gap-16">
+        <div>
+          <FadeIn y={24}>
+            <p className="t-label text-accent">{tr(UI.about.eyebrow)}</p>
+            <h2 className="t-h2 mt-3 text-strong">{tr(UI.about.heading)}</h2>
+          </FadeIn>
+          <FadeIn y={24} delay={0.1}>
+            <p className="t-lead mt-6 text-mist">{tr(UI.about.p1)}</p>
+            <p className="t-lead mt-4 text-mist">{tr(UI.about.p2)}</p>
+            <p className="t-body mt-6 border-l-2 border-accent/60 pl-4 italic text-mist">{tr(UI.about.goal)}</p>
+          </FadeIn>
+        </div>
 
-      {/* Heading + text + button */}
-      <div className="flex flex-col items-center gap-10 sm:gap-14 md:gap-16">
-        <FadeIn delay={0} y={40}>
-          <h2
-            className="hero-heading font-black uppercase leading-none tracking-tight text-center"
-            style={{ fontSize: 'clamp(3rem, 12vw, 160px)' }}
-          >
-            About me
-          </h2>
-        </FadeIn>
+        <div className="flex flex-col gap-4">
+          <div className="grid grid-cols-2 gap-4">
+            {UI.about.facts.map((f, i) => (
+              <FadeIn key={f.label.en} delay={0.08 * i} y={20}>
+                <div className="h-full rounded-2xl border border-mist/15 bg-surface p-5">
+                  <div className="font-display text-4xl font-semibold text-strong">{f.value}</div>
+                  <div className="t-small mt-2 text-mist">{tr(f.label)}</div>
+                </div>
+              </FadeIn>
+            ))}
+          </div>
 
-        <div className="flex flex-col items-center gap-16 sm:gap-20 md:gap-24">
-          <AnimatedText
-            text="With over 6 years of experience building enterprise systems, i focus on backend architecture, clean code, and reliable delivery, i truly enjoy solving hard problems and shipping software that businesses actually rely on. Let's build something reliable together!"
-            className="text-[#D7E2EA] font-medium text-center leading-relaxed max-w-[560px]"
-            style={{ fontSize: 'clamp(1rem, 2vw, 1.35rem)' }}
-          />
-          <ContactButton />
+          <FadeIn delay={0.3} y={20}>
+            <div className="rounded-2xl border border-mist/15 bg-surface p-5">
+              <div className="flex items-center gap-2 text-strong">
+                <Award className="h-4 w-4 text-accent" />
+                <span className="t-label">{tr(UI.about.certs)}</span>
+              </div>
+              <ul className="mt-3 space-y-2">
+                {CERTS.map((c) => (
+                  <li key={c} className="t-small text-mist">
+                    {c}
+                  </li>
+                ))}
+              </ul>
+              <div className="mt-5 flex items-center gap-2 text-strong">
+                <GraduationCap className="h-4 w-4 text-accent" />
+                <span className="t-label">{tr(UI.about.edu)}</span>
+              </div>
+              <p className="t-small mt-2 text-mist">{tr(UI.about.eduValue)}</p>
+            </div>
+          </FadeIn>
         </div>
       </div>
     </section>

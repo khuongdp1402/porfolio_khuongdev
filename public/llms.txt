@@ -1,0 +1,33 @@
+# Đỗ Phú Khương (Do Phu Khuong) — Full-Stack .NET Developer
+
+> Full-stack .NET developer based in Ho Chi Minh City, Vietnam, with 6+ years of experience. Builds e-commerce, booking and ERP systems on ASP.NET Core with Clean Architecture and CQRS, with SEO, AIO (AI Optimization) and GEO (Generative Engine Optimization) built in. Available for full-time roles and freelance projects.
+
+## Contact
+- Email: khuongdp1402@gmail.com
+- Phone / Zalo: +84 372 803 085 (Zalo chat: https://zalo.me/0372803085)
+- Location: 40/40 Le Thi Hong, Go Vap District, Ho Chi Minh City, Vietnam
+- Website: https://phukhuong.io.vn/
+
+## Services
+- E-commerce and booking websites: carts, online payments, admin back office; SEO, AIO and GEO ready
+- Backend development: ASP.NET Core, Clean Architecture, CQRS, REST APIs
+- System architecture: microservices, Kafka event-driven systems, YARP API gateway
+- Frontend development: React, Blazor
+- AI automation: n8n, MCP (Model Context Protocol), Claude Code
+- Enterprise ERP and WMS systems
+
+## Featured projects
+- OKDIMALL (https://okdimall.com): travel booking platform for hotels and tours with online payment (ONEPay) and an ERP back office. Role: Project Manager & Full-stack Developer, leading 4 developers, 10/2023 – present. Stack: .NET 9, React, PostgreSQL, Redis, Meilisearch, Hangfire, Docker.
+- Kinetic3D (https://kinetic.phukhuong.io.vn): online 3D-printing store with interactive 3D viewer, multi-colour print ordering and image-to-3D generation. Personal project, managed and delivered end to end.
+- Winglove (https://winglove.phukhuong.io.vn): SaaS for online wedding invitations with RSVP, photo albums and QR gifting; free preview, pay to publish. Personal project, managed and delivered end to end.
+
+## Experience
+- Shuei Trading Vietnam (Japan), 10/2024 – present: Vendor Quotation AI system (Hong Kong); Tealife warehouse management ERP (Japan).
+- Freelance, 10/2023 – present: SocialApp multi-tenant social-commerce ERP (14 microservices); OKDIMALL.
+- AES Technologies Vietnam, 03/2023 – 10/2024: Savills ERP (Singapore), MIH ERP (Cambodia), Saleskit booking system (Cambodia), Kiosk Pohang (Korea).
+- KAS Technology Corporation, 09/2020 – 01/2023: SMAC Cloud in-house ERP.
+
+## Credentials
+- MB-800: Microsoft Dynamics 365 Business Central Functional Consultant
+- AI-900: Microsoft Azure AI Fundamentals
+- Open University — Computer Science (2017 – 2021)
